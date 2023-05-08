@@ -1,0 +1,13 @@
+﻿<Window
+    x:Class="PrismHyxApp.Raman.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="clr-namespace:PrismHyxApp.Raman.Base"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Width="640"
+    Height="480">
+    <Grid>
+        <ContentControl prism:RegionManager.RegionName="{x:Static base:PrismManager.RamanMainViewRegionName}" />
+    </Grid>
+</Window>

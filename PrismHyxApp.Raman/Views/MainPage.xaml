@@ -1,0 +1,77 @@
+﻿<UserControl
+    x:Class="PrismHyxApp.Raman.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:PrismHyxApp.Raman.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:MainPageViewModel}"
+    d:DesignHeight="400"
+    d:DesignWidth="640"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel>
+            <Border
+                Margin="3"
+                BorderBrush="LightBlue"
+                BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <Label Margin="5" Content="MainPage" />
+                    <Button
+                        MinWidth="80"
+                        Margin="5"
+                        Command="{Binding UpdateShowInfoCommand}"
+                        Content="查询" />
+                    <Button
+                        MinWidth="80"
+                        Margin="5"
+                        Command="{Binding InsertInfoCommand}"
+                        Content="插入" />
+                    <Button
+                        MinWidth="80"
+                        Margin="5"
+                        Command="{Binding DeleteInfoCommand}"
+                        Content="删除" />
+                    <Label Content="{Binding CurrentOil.Name}" />
+                </StackPanel>
+            </Border>
+
+
+            <ListView
+                Margin="5"
+                ItemsSource="{Binding OilInfos}"
+                SelectedItem="{Binding SelectedOilInfo}">
+
+                <!--<i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged" >
+                        <i:InvokeCommandAction Command="{Binding ShowCurrentCommand}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>-->
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="序号" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="油样名称" />
+                        <GridViewColumn DisplayMemberBinding="{Binding OilNo}" Header="油样编号" />
+                        <GridViewColumn DisplayMemberBinding="{Binding OilType}" Header="油样类型" />
+                        <GridViewColumn DisplayMemberBinding="{Binding SpectrumInfo}" Header="谱图信息" />
+                        <!--
+                        <GridViewColumn DisplayMemberBinding="{Binding PredictValue}" Header="预测信息" />
+                        <GridViewColumn DisplayMemberBinding="{Binding SampleDate}" Header="采样日期" />
+                        <GridViewColumn DisplayMemberBinding="{Binding SamplePart}" Header="采样部位" />
+                        -->
+                        <GridViewColumn Header="功能">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Width="80" Content="删除" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</UserControl>
